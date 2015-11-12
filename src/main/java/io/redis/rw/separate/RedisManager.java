@@ -1,32 +1,29 @@
 package io.redis.rw.separate;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.LinkedBlockingQueue;
-
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.pool.BasePoolableObjectFactory;
 import org.apache.commons.pool.impl.GenericObjectPool;
 import org.apache.commons.pool.impl.GenericObjectPool.Config;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 import redis.clients.jedis.exceptions.JedisException;
 
 /**
- * redis主从架构的客户端管理类, 1 支持主从复制key/value,pop/push,pub/sub,读/写分离等功能的灾难失败自动选择和恢复 2
- * 可以选择读写分离功能,主写从读,默认不启用,都使用主服务进行所有操作
+ * redis主从架构的客户端管理类, 
+ * 1 支持主从复制key/value,pop/push,pub/sub,读/写分离等功能的灾难失败自动选择和恢复
+ * 2 可以选择读写分离功能,主写从读,默认不启用,都使用主服务进行所有操作
  * 
- * @author zhang_jhai 创建日期 @Jan 14, 2013 修改人:zhang_jhai version 2.0
+ * @author yaochong.chen
  */
 public class RedisManager {
 
